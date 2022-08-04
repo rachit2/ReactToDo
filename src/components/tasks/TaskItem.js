@@ -7,8 +7,6 @@ import { deleteTask, updateTask } from '../../actions/task';
 import "./Tasks.scss";
 
 
-
-
 const onChange = (id) =>
 {
   // e.preventDefault();
@@ -42,12 +40,12 @@ const TaskItem = ({
           <Fragment>
             {
               (
-                <Link to ={`/edit-task/${_id}`}><i class="fas fa-pencil-alt" id="font_s"></i></Link>
+                <Link to ={`/edit-task/${_id}`}  ><i class="fas fa-pencil-alt" id="font_s"></i></Link>
               )
             }
             {(
               <button
-                onClick={(e) => {e.stopPropagation(); deleteTask(_id); }}
+                onClick={() => { deleteTask(_id); onChange(_id) }}
                 type="button"
                 className="btn btn-danger"
               >
@@ -60,7 +58,7 @@ const TaskItem = ({
               <button
                 // onClick={() => {updateTask(_id), window.location.reload() }}
                 // onClick={() => onChange(_id)}
-                onClick={(e) => { e.stopPropagation();  updateTask(_id); onChange(_id); }}
+                onClick={() => { updateTask(_id); onChange(_id) }}
                 type="button"
                 className="btn btn-success"
               >
@@ -73,7 +71,7 @@ const TaskItem = ({
         )}
       </div>
     </div>
-  //  </Link>
+    // </Link>
 );
 
 TaskItem.defaultProps = {

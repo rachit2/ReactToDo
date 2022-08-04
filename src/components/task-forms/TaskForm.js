@@ -18,7 +18,8 @@ const TaskForm = ({
   
     useEffect(() => {
       if(!task) getTask(window.location.pathname.split('/').pop());
-        if (!loading && task) {
+      if (task) if(!(task._id === window.location.pathname.split('/').pop()) ) getTask(window.location.pathname.split('/').pop());
+      if (!loading && task) {
         const taskData = { ...initialState };
         for (const key in task) {
           if (key in taskData) taskData[key] = task[key];
